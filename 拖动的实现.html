@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>    
+<html lang="en">    
+<head>    
+    <meta charset="UTF-8">
+    <title>拖动</title>
+    <script type="text/javascript">    
+    function allowDrop(ev)    
+    {    
+    ev.preventDefault();    
+    }    
+        
+    var srcdiv = null;    
+    function drag(ev,divdom)    
+    {    
+    srcdiv=divdom;    
+    ev.dataTransfer.setData("text/html",divdom.innerHTML);    
+    }    
+        
+    function drop(ev,divdom){    
+      ev.preventDefault();    
+      if(srcdiv != divdom){    
+        srcdiv.innerHTML = divdom.innerHTML;    
+        divdom.innerHTML=ev.dataTransfer.getData("text/html");    
+      }    
+    }    
+    </script>    
+</head>    
+<body>    
+    
+<div style="width: 250px;height:250px;background: yellow"  ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">    
+  div1333!   
+</div>    
+<div style="width: 150px;height:150px;background: green" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">    
+div24444!    
+</div>    
+<div style="width: 250px;height:250px; background: red" ondrop="drop(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event, this)">    
+div3555    
+</div>  
+    
+</body>    
+</html>  
